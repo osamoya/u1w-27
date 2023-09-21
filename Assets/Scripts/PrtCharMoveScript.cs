@@ -91,7 +91,7 @@ public class PrtCharMoveScript : MonoBehaviour
     bool checkObject(Vector2 pos)
     {
         Collider2D hit = Physics2D.OverlapPoint(pos);
-        if (hit == null) return false;
+        if (hit == null || hit.gameObject.CompareTag("ball")) return false;
         return true;
     }
 
@@ -101,7 +101,7 @@ public class PrtCharMoveScript : MonoBehaviour
         Vector2 next = new Vector2(x, y);
         Debug.Log("調べるのは" + next);
         Collider2D hit = Physics2D.OverlapPoint(next);
-        if (hit == null)
+        if (hit == null||hit.gameObject.CompareTag("ball"))
         {
             Debug.Log("目の前に何もないので動きます");
             return false;
@@ -114,7 +114,7 @@ public class PrtCharMoveScript : MonoBehaviour
         Vector2 nextnext = new Vector2(x, y);
         Debug.Log("調べるのは" + nextnext);
         hit = Physics2D.OverlapPoint(nextnext);
-        if (hit == null) return false;
+        if (hit == null||hit.gameObject.CompareTag("ball")) return false;
         else
         {
             Debug.Log("2個先もダメです");
@@ -127,6 +127,7 @@ public class PrtCharMoveScript : MonoBehaviour
         Debug.Log(next + "にボタンがあるかどうか調べます");
         Collider2D nextPos = Physics2D.OverlapPoint(next);
         Debug.Log("そこにあるのは，"+nextPos);
+        if (nextPos == null) { return; }
         PrtBtnScript prtBtnScript=nextPos.gameObject.GetComponent<PrtBtnScript>();
         if (prtBtnScript == null) { Debug.Log("目の前の場所："+next+"にボタンはないよ？");return; }
         prtBtnScript.switchPower();
