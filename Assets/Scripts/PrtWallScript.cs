@@ -18,8 +18,9 @@ public class PrtWallScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("�ǂɏՓˁI");
-        col.gameObject.SetActive(false);
+        //Debug.Log("�ǂɏՓˁI");
+        if (col.gameObject.CompareTag("ball")) { col.gameObject.SetActive(false); }
+        
     }
 
 }
