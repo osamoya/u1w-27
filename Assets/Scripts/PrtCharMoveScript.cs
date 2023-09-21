@@ -7,10 +7,15 @@ public class PrtCharMoveScript : MonoBehaviour
 {
     [SerializeField] int X;
     [SerializeField] int Y;
+
+    Vector2 next;
+    Vector2 nextnext;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        next=new Vector2 (X,Y);
+        nextnext = next;//not good...
     }
 
     // Update is called once per frame
@@ -23,7 +28,8 @@ public class PrtCharMoveScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) { Y -= 1; }
         */
         if (Input.anyKeyDown) { move(); }
-
+        if (Input.GetKeyDown(KeyCode.Return)){ switchButton(); }
+        //Debug.Log("今の正面は：" + next);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -34,9 +40,9 @@ public class PrtCharMoveScript : MonoBehaviour
     void move()
     {
         //get input
-        char dirct;
-        Vector2 next=new Vector2(X,Y);
-        Vector2 nextnext= next;
+        if (!Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.DownArrow)) { Debug.Log("input is not Arrow"); return ; }
+        next = new Vector2(X, Y);
+        nextnext = next;
         if (Input.GetKeyDown(KeyCode.LeftArrow)) { next.x--;nextnext.x = next.x - 1; }
         if (Input.GetKeyDown(KeyCode.RightArrow)) { next.x++; nextnext.x = next.x + 1; }
         if (Input.GetKeyDown(KeyCode.UpArrow)) { next.y++; nextnext.y = next.y + 1; }
@@ -59,6 +65,8 @@ public class PrtCharMoveScript : MonoBehaviour
         transform.position = next;
         X = (int)next.x;
         Y = (int)next.y;
+        next = nextnext;
+        Debug.Log("今の正面は：" + next);
         /*
         int x= X;
         int y=Y;
@@ -114,5 +122,14 @@ public class PrtCharMoveScript : MonoBehaviour
         }
     }
 
-    
+    private void switchButton()
+    {
+        Debug.Log(next + "にボタンがあるかどうか調べます");
+        Collider2D nextPos = Physics2D.OverlapPoint(next);
+        Debug.Log("そこにあるのは，"+nextPos);
+        PrtBtnScript prtBtnScript=nextPos.gameObject.GetComponent<PrtBtnScript>();
+        if (prtBtnScript == null) { Debug.Log("目の前の場所："+next+"にボタンはないよ？");return; }
+        prtBtnScript.switchPower();
+
+    }
 }

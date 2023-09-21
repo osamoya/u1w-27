@@ -52,6 +52,8 @@ public class PrtObjectScript : MonoBehaviour
         X = (int)pos.x;
         Y=(int)pos.y;
         transform.position = pos;
+        Debug.Log("ëOÅF"+transform.position);
+        Debug.Log("å„ÅF" + pos);
         Debug.Log("object was moved");
 
     }
