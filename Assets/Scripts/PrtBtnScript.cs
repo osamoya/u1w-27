@@ -7,6 +7,7 @@ public class PrtBtnScript : MonoBehaviour
     [SerializeField] GameObject ball4;
     [SerializeField] GameObject ball6;
     [SerializeField] GameObject ball8;
+    [SerializeField] GameObject balls;
     [SerializeField] public bool isPower;
     [SerializeField] private Sprite OFF_s;
     [SerializeField] private Sprite ON_s;
@@ -30,12 +31,19 @@ public class PrtBtnScript : MonoBehaviour
         isPower = !isPower;
 
         spriteRenderer.sprite = (isPower) ? ON_s : OFF_s;
+        
         if (isPower)
         {
             ball2.gameObject.SetActive(true);
             ball4.gameObject.SetActive(true);
             ball6.gameObject.SetActive(true);
             ball8.gameObject.SetActive(true);
+            balls.gameObject.SetActive(true);
         }
+        else
+        {
+            balls.gameObject.SetActive(false);
+        }
+        
     }
 }

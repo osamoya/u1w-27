@@ -57,4 +57,7 @@ public class PrtObjectScript : MonoBehaviour
         Debug.Log("object was moved");
 
     }
+
+
+
 }
