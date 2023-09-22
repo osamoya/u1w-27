@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class PrtStageManagerScript : MonoBehaviour
 {
+    PrtAppliancesScript[] appliancesScripts;
+    public static int appNum;
+    public static int offNum;
     // Start is called before the first frame update
     void Start()
     {
-        
+        appliancesScripts=FindObjectsOfType<PrtAppliancesScript>();
+        appNum=appliancesScripts.Length;
+        Debug.Log("‚±‚Ì•”‰®‚É‰Æ“d‚Í"+appNum);
+        offNum = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if (stageClearCheck()) { Debug.Log("I—¹I"); }
+        //Debug.Log("ó‹µF" + offNum);
+    }
+
+    bool stageClearCheck()
+    {
+        if (offNum < appNum) { return false; }
+        return true;
+    }
+
+    public static void AddOffNum()
+    {
+        Debug.Log("ˆêŒÂÁ‚¦‚Ü‚µ‚½");
+        offNum++;
+        if (offNum < appNum) { return; } else { Debug.Log("```I—¹```"); return; }
+    }
+    public static void DecrementOffNum()
+    {
+        offNum--;
+        if (offNum < 0) {offNum = 0;}
     }
 }
