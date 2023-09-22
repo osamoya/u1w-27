@@ -8,6 +8,7 @@ public class PrtBallScript2 : MonoBehaviour
     [SerializeField] GameObject ball4;
     [SerializeField] GameObject ball6;
     [SerializeField] GameObject ball8;
+    private float time=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,8 @@ public class PrtBallScript2 : MonoBehaviour
     void Update()
     {
         move();
+        time += Time.deltaTime;
+        if (time >= 30) { Destroy(this.gameObject); }
     }
     private void ResetPos()
     {
