@@ -22,7 +22,7 @@ public class PrtBallScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("wall")) { gameObject.SetActive(false); }
-        if (collision.gameObject.CompareTag("object")) { gameObject.SetActive(false); }
+        if (collision.gameObject.CompareTag("object")) { Debug.Log("‹…‚ª•¨‚É“–‚½‚è‚Ü‚µ‚½"); gameObject.SetActive(false); }
     }
 
 }
