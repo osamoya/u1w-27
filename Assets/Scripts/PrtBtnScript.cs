@@ -33,16 +33,17 @@ public class PrtBtnScript : MonoBehaviour
         spriteRenderer.sprite = (isPower) ? ON_s : OFF_s;
         
         if (isPower)
-        {
+        {/*
             ball2.gameObject.SetActive(true);
             ball4.gameObject.SetActive(true);
             ball6.gameObject.SetActive(true);
             ball8.gameObject.SetActive(true);
-            balls.gameObject.SetActive(true);
+            balls.gameObject.SetActive(true);*/
+            Instantiate(balls, transform.position, Quaternion.identity);
         }
         else
         {
-            balls.gameObject.SetActive(false);
+            //balls.gameObject.SetActive(false);
         }
         
     }
