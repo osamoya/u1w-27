@@ -17,11 +17,17 @@ public class PrtAppliancesScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTrigggerEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("ball")) { 
-            Debug.Log("éÛêM"); 
+        
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("ball"))
+        {
+            Debug.Log("éÛêM");
             isOn = !isOn;
+            if (!isOn) { PrtStageManagerScript.AddOffNum(); } else { PrtStageManagerScript.DecrementOffNum(); }
         }
     }
 
