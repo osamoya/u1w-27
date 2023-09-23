@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class PlayerMove_Script : MonoBehaviour
 {
     [SerializeField] int X;
     [SerializeField] int Y;
+    [SerializeField] int easeNum;
     Vector2 next;
     Vector2 nextnext;
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class PlayerMove_Script : MonoBehaviour
     {
         next = new Vector2(X, Y);
         nextnext = next;//not good...
+        Debug.Log("NUM=" + easeNum);
     }
 
     // Update is called once per frame
@@ -44,7 +46,9 @@ public class PlayerMove_Script : MonoBehaviour
             Collider2D objectPos = Physics2D.OverlapPoint(next);
             objectPos.gameObject.GetComponent<PrtObjectScript>().moveObject(nextnext);
         }
-        transform.position = next;
+        //transform.position = next;
+        transform.DOMove(next, 0.5f).SetEase(Ease.OutQuart);//(Ease)easeNum);//Ease.
+        //Ease.q
         X = (int)next.x;
         Y = (int)next.y;
         next = nextnext;
