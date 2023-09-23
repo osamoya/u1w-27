@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class CheckPanel_Script : MonoBehaviour
 {
@@ -31,5 +32,11 @@ public class CheckPanel_Script : MonoBehaviour
         {
             ONOFF.text = "Still ON...";
         }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow)){
+            SceneManager.LoadScene("SelectScene");
+        }
+        
+
     }
 }
