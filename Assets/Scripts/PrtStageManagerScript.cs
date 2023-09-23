@@ -7,6 +7,8 @@ public class PrtStageManagerScript : MonoBehaviour
     PrtAppliancesScript[] appliancesScripts;
     public static int appNum;
     public static int offNum;
+    public static bool isClear;
+    [SerializeField] GameObject panel;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,7 @@ public class PrtStageManagerScript : MonoBehaviour
         appNum=appliancesScripts.Length;
         Debug.Log("‚±‚Ì•”‰®‚É‰Æ“d‚Í"+appNum);
         offNum = 0;
+        isClear = false;
     }
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class PrtStageManagerScript : MonoBehaviour
     {
         //if (stageClearCheck()) { Debug.Log("I—¹I"); }
         //Debug.Log("ó‹µF" + offNum);
+        if (isClear) { setPanel(); }
     }
 
     bool stageClearCheck()
@@ -33,11 +37,15 @@ public class PrtStageManagerScript : MonoBehaviour
     {
         Debug.Log("ˆêŒÂÁ‚¦‚Ü‚µ‚½");
         offNum++;
-        if (offNum < appNum) { return; } else { Debug.Log("```I—¹```"); return; }
+        if (offNum < appNum) { return; } else { Debug.Log("```I—¹```"); isClear = true; return; }
     }
     public static void DecrementOffNum()
     {
         offNum--;
         if (offNum < 0) {offNum = 0;}
+    }
+    private void setPanel()
+    {
+        panel.SetActive(true);
     }
 }
