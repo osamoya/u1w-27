@@ -7,6 +7,7 @@ public class Object_Script : MonoBehaviour
 {
     [SerializeField] int X;
     [SerializeField] int Y;
+    [SerializeField] private bool IsMoveable;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +28,5 @@ public class Object_Script : MonoBehaviour
         transform.DOMove(pos, 0.1f); ;
         
     }
-    public bool canMove(int x,int y)
-    {
-        int dx = X - x;
-        int dy = Y - y;
-        Vector2 foo = new Vector2(dx, dy);
-        
-        Collider2D hit = Physics2D.OverlapPoint(foo);
-        
-        return (hit == null) ? true : false;
-    }
+    public bool GetIsMoveable() { return IsMoveable; }
 }

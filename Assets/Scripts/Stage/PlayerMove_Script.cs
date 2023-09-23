@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
+
 public class PlayerMove_Script : MonoBehaviour
 {
     [SerializeField] int X;
@@ -45,20 +47,29 @@ public class PlayerMove_Script : MonoBehaviour
         //do move
         if (isnext && isnextnext)
         {
+            DontMove();
             return;
         }
         if (isnext)
         {
             Collider2D objectPos = Physics2D.OverlapPoint(next);
+            if (!objectPos.gameObject.GetComponent<Object_Script>().GetIsMoveable())
+            {
+                DontMove();
+                Debug.Log("XXX");
+                return;
+            }
             objectPos.gameObject.GetComponent<Object_Script>().moveObject(nextnext);
         }
-        //transform.position = next;
-        transform.DOMove(next, 0.5f).SetEase(Ease.OutQuart);//(Ease)easeNum);//Ease.
+        
+        {
+            //transform.position = next;
+            transform.DOMove(next, 0.5f).SetEase(Ease.OutQuart);//(Ease)easeNum);//Ease.
         //Ease.q
         X = (int)next.x;
         Y = (int)next.y;
         next = nextnext;
-    
+        }
     }
     bool checkObject(Vector2 pos)
     {
@@ -74,6 +85,20 @@ public class PlayerMove_Script : MonoBehaviour
         PrtBtnScript prtBtnScript = nextPos.gameObject.GetComponent<PrtBtnScript>();
         if (prtBtnScript == null) { return; }
         prtBtnScript.switchPower();
+
+    }
+    void DontMove()
+    {
+        Vector2 now = new Vector2(X, Y);
+        int t = 8;
+        Vector2 p = (t * now + (10-t) * next)/10;
+        DG.Tweening.Sequence s = DOTween.Sequence();
+        s.Append(
+            transform.DOMove(p, 0.1f)
+            );
+        s.Append(
+            transform.DOMove(now, 0.2f)
+            );
 
     }
 
