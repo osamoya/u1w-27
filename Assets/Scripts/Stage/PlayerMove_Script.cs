@@ -50,7 +50,7 @@ public class PlayerMove_Script : MonoBehaviour
         if (isnext)
         {
             Collider2D objectPos = Physics2D.OverlapPoint(next);
-            objectPos.gameObject.GetComponent<PrtObjectScript>().moveObject(nextnext);
+            objectPos.gameObject.GetComponent<Object_Script>().moveObject(nextnext);
         }
         //transform.position = next;
         transform.DOMove(next, 0.5f).SetEase(Ease.OutQuart);//(Ease)easeNum);//Ease.
