@@ -28,7 +28,6 @@ public class Btn_Script : MonoBehaviour
                 isPower = false;
             }
         }
-        Debug.Log("ç°ÇÃã ÅF"+ballNum);
     }
     public void switchPower()
     {
