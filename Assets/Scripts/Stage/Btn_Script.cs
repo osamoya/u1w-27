@@ -40,4 +40,8 @@ public class Btn_Script : MonoBehaviour
     {
         ballNum--;
     }
+    public static int getBallNum()
+    {
+        return ballNum;
+    }
 }
