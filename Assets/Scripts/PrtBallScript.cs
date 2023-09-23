@@ -24,6 +24,7 @@ public class PrtBallScript : MonoBehaviour
         if (collision.gameObject.CompareTag("wall")|| collision.gameObject.CompareTag("object")|| collision.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+            Btn_Script.ReduceBall();
         }
     }
 

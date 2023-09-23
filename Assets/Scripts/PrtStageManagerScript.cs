@@ -27,7 +27,7 @@ public class PrtStageManagerScript : MonoBehaviour
         if (isClear) { setPanel(); }
     }
 
-    bool stageClearCheck()
+    public bool stageOffClearCheck()
     {
         if (offNum < appNum) { return false; }
         return true;
@@ -46,6 +46,6 @@ public class PrtStageManagerScript : MonoBehaviour
     }
     private void setPanel()
     {
-        panel.SetActive(true);
+        //panel.SetActive(true);
     }
 }

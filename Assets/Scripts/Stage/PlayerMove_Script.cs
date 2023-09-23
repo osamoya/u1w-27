@@ -74,7 +74,7 @@ public class PlayerMove_Script : MonoBehaviour
     bool checkObject(Vector2 pos)
     {
         Collider2D hit = Physics2D.OverlapPoint(pos);
-        if (hit == null || hit.gameObject.CompareTag("ball")) return false;
+        if (hit == null || hit.gameObject.CompareTag("ball")||hit.gameObject.CompareTag("area")) return false;
         return true;
     }
     private void switchButton()
@@ -82,7 +82,7 @@ public class PlayerMove_Script : MonoBehaviour
         Collider2D nextPos = Physics2D.OverlapPoint(next);
      
         if (nextPos == null) { return; }
-        PrtBtnScript prtBtnScript = nextPos.gameObject.GetComponent<PrtBtnScript>();
+        Btn_Script prtBtnScript = nextPos.gameObject.GetComponent<Btn_Script>();
         if (prtBtnScript == null) { return; }
         prtBtnScript.switchPower();
 
