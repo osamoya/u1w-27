@@ -4155,7 +4155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2031974621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4232,10 +4232,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ONOFF: {fileID: 585857193}
   RedBall: {fileID: 883677154}
-  End: {fileID: 1148737716}
+  End: {fileID: 262486589}
   noBall: 0
   noON: 0
-  ClearPanel: {fileID: 0}
+  ClearPanel: {fileID: 1482895366}
 --- !u!1 &2042160861
 GameObject:
   m_ObjectHideFlags: 0
