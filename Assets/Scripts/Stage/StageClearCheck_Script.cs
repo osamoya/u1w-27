@@ -5,10 +5,11 @@ using UnityEngine;
 public class StageClearCheck_Script : MonoBehaviour
 {
     PrtStageManagerScript stageManager_;
+    [SerializeField] GameObject CheckPanel;
     // Start is called before the first frame update
     void Start()
     {
-        stageManager_ = GameObject.Find("MainCamera").GetComponent<PrtStageManagerScript>();
+        stageManager_ = GameObject.Find("Main Camera").GetComponent<PrtStageManagerScript>();
     }
 
     // Update is called once per frame
@@ -19,8 +20,10 @@ public class StageClearCheck_Script : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log("ì•Ç›Ç‹ÇµÇΩ");
+        if (!col.gameObject.CompareTag("Player")) { return; }
         //call Panel
-        
+        CheckPanel.SetActive(true);
         /*
         Debug.Log("îªíËì•Ç›Ç‹ÇµÇΩ");
         if(stageManager_.stageOffClearCheck())
@@ -30,9 +33,12 @@ public class StageClearCheck_Script : MonoBehaviour
         */
 
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D col)
     {
+        Debug.Log("ç~ÇËÇ‹ÇµÇΩ");
+        if (!col.gameObject.CompareTag("Player")) { return; }
         //disable Panel
+        CheckPanel.SetActive(false);
     }
 
 }

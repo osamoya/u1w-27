@@ -74,7 +74,7 @@ public class PlayerMove_Script : MonoBehaviour
     bool checkObject(Vector2 pos)
     {
         Collider2D hit = Physics2D.OverlapPoint(pos);
-        if (hit == null || hit.gameObject.CompareTag("ball")) return false;
+        if (hit == null || hit.gameObject.CompareTag("ball")||hit.gameObject.CompareTag("area")) return false;
         return true;
     }
     private void switchButton()
