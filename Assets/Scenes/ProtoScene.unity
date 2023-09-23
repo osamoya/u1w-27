@@ -3436,6 +3436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
+  ON_s: {fileID: 21300000, guid: 99df92af605e9c74384d5567492caa0f, type: 3}
+  OFF_s: {fileID: 21300000, guid: 506f99df7a5dfaf40af0f916ec58a41c, type: 3}
 --- !u!114 &1678163811
 MonoBehaviour:
   m_ObjectHideFlags: 0
