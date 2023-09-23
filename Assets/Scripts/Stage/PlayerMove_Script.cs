@@ -7,14 +7,20 @@ public class PlayerMove_Script : MonoBehaviour
     [SerializeField] int X;
     [SerializeField] int Y;
     [SerializeField] int easeNum;
+    [SerializeField] Sprite UP;
+    [SerializeField] Sprite DOWN;
+    [SerializeField] Sprite LEFT;
+    [SerializeField] Sprite RIGHT;
     Vector2 next;
     Vector2 nextnext;
+    SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         next = new Vector2(X, Y);
         nextnext = next;//not good...
-        Debug.Log("NUM=" + easeNum);
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -70,4 +76,25 @@ public class PlayerMove_Script : MonoBehaviour
         prtBtnScript.switchPower();
 
     }
+
+    void changeDirection(int d)
+    {
+        switch (d)
+        {
+            case 8:
+                spriteRenderer.sprite = UP;
+                break;
+            case 2: spriteRenderer.sprite = DOWN;
+                break;
+            case 4:
+                spriteRenderer.sprite = LEFT;
+                break;
+            case 6:
+                spriteRenderer.sprite = RIGHT;
+               break;
+            default: return;
+        }
+        return ;
+    }
+
 }
