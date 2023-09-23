@@ -23,5 +23,13 @@ public class CheckPanel_Script : MonoBehaviour
         {
             RedBall.text = "Still red";
         }
+        if (PrtStageManagerScript.isClear)
+        {
+            ONOFF.text = "<s>Still ON...</s>";
+        }
+        else
+        {
+            ONOFF.text = "Still ON...";
+        }
     }
 }

@@ -46,6 +46,6 @@ public class PrtStageManagerScript : MonoBehaviour
     }
     private void setPanel()
     {
-        panel.SetActive(true);
+        //panel.SetActive(true);
     }
 }
