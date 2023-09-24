@@ -219,13 +219,13 @@ RectTransform:
   m_Children:
   - {fileID: 1381888661}
   - {fileID: 1280986742}
-  - {fileID: 1987757169}
   - {fileID: 2112073702}
   - {fileID: 613355789}
   - {fileID: 1210309668}
   - {fileID: 1526390823}
   - {fileID: 288528080}
   - {fileID: 1245340833}
+  - {fileID: 1987757169}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

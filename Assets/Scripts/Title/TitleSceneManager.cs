@@ -35,7 +35,7 @@ public class TitleSceneManager : MonoBehaviour
         {
             DoOP();
             fadeTitle();
-            DOVirtual.DelayedCall(1,()=> loadScene());
+            //DOVirtual.DelayedCall(1,()=> loadScene());
             
         }
     }
@@ -49,7 +49,7 @@ public class TitleSceneManager : MonoBehaviour
         
         
         audioSource.PlayOneShot(fadeOutRay);
-        fadeOverRay.DOFade(1,0.2f);
+        //fadeOverRay.DOFade(1,0.2f);
     }
     private void DoOP()
     {
@@ -57,13 +57,24 @@ public class TitleSceneManager : MonoBehaviour
         //ƒŠƒ‚ƒRƒ“•ÏX
         setRmcn(true);
         //—¼˜eíœ
-        DOVirtual.DelayedCall(1, () => setTV(false));
-        DOVirtual.DelayedCall(0, () => setLight(false));
+        DOVirtual.DelayedCall(1, () => OFFAppliances());
+        DOVirtual.DelayedCall(2, () => setRmcn(false)) ;
         //ƒŠƒ‚ƒRƒ“•ÏX
-        setRmcn(false);
+        DOVirtual.DelayedCall(2, () => fadeOverRay.DOFade(1, 5f));
+
+        DOVirtual.DelayedCall(6, () => loadScene());
         //ˆÃ“]
 
     }
+
+    void OFFAppliances()
+    {
+        TV_OFF.SetActive(true);
+        TV_ON.SetActive(false);
+        Light_OFF.SetActive(true);
+        Light_ON.SetActive(false);
+    }
+
     private void setRmcn(bool b)
     {
         if (b)
