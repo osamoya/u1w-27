@@ -18,6 +18,8 @@ public class PlayerMove_Script : MonoBehaviour
     SpriteRenderer spriteRenderer;
     [SerializeField] AudioClip move_;
     [SerializeField] AudioClip col_;
+    [SerializeField] AudioClip btn_;
+    [SerializeField] AudioClip obj_;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
@@ -63,6 +65,7 @@ public class PlayerMove_Script : MonoBehaviour
                 Debug.Log("XXX");
                 return;
             }
+            audioSource.PlayOneShot(obj_);
             objectPos.gameObject.GetComponent<Object_Script>().moveObject(nextnext);
         }
         
@@ -84,6 +87,7 @@ public class PlayerMove_Script : MonoBehaviour
     }
     private void switchButton()
     {
+        audioSource.PlayOneShot(btn_);
         Collider2D nextPos = Physics2D.OverlapPoint(next);
      
         if (nextPos == null) { return; }

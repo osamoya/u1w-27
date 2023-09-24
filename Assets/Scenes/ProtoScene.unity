@@ -2954,6 +2954,8 @@ MonoBehaviour:
   RIGHT: {fileID: 21300000, guid: 1f03b549c60cf614ca958bb122a7db3d, type: 3}
   move_: {fileID: 8300000, guid: 92fee52abb592c946ad97ed4a8da6d39, type: 3}
   col_: {fileID: 8300000, guid: a191a568905a6ca4fae0427ef362111f, type: 3}
+  btn_: {fileID: 8300000, guid: e306ff4c9a11f7b4ba42af2c01bc228c, type: 3}
+  obj_: {fileID: 8300000, guid: e1c79cae81609434097bf2029e0fde77, type: 3}
 --- !u!50 &1245761057
 Rigidbody2D:
   serializedVersion: 4
