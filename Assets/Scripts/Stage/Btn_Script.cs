@@ -26,6 +26,7 @@ public class Btn_Script : MonoBehaviour
             if (time >= 0.5f) {
                 spriteRenderer.sprite = OFF_s;
                 isPower = false;
+                time = 0;
             }
         }
     }
