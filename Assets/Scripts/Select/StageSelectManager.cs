@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using static System.Net.Mime.MediaTypeNames;
 
 public class StageSelectManager : MonoBehaviour
 {
@@ -10,8 +12,9 @@ public class StageSelectManager : MonoBehaviour
     [SerializeField] int row = 3;
     [SerializeField] int col = 2;
     [SerializeField] int selectedStage = 0;
-    [SerializeField] Image fadeOverRay;
+    [SerializeField] UnityEngine.UI.Image fadeOverRay;
     [SerializeField] AudioClip select_;
+    [SerializeField] AudioClip go_;
     AudioSource audioSource;
 
     Selectable[] selects;
@@ -36,6 +39,10 @@ public class StageSelectManager : MonoBehaviour
     {
         selectNumber();
         selectButton();
+        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Z))
+        {
+            loadStage(selectedStage);
+        }
     }
     void selectButton()
     {
@@ -62,5 +69,21 @@ public class StageSelectManager : MonoBehaviour
         if (selectedStage < 0) selectedStage += (row*col);
         selectedStage %= (row*col);
 
+    }
+    void loadStage(int n)
+    {
+        string s;
+        switch (n)
+        {
+            case 0:
+                s = "";break;
+            case 9:
+                s = "CreditScene";break;
+            default:
+                s = ""; break;
+        }
+        audioSource.PlayOneShot(go_);
+        fadeOverRay.DOFade(1, 0.5f);
+        DOVirtual.DelayedCall(1, () => SceneManager.LoadScene(s));
     }
 }
