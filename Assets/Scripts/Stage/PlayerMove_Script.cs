@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove_Script : MonoBehaviour
 {
@@ -39,6 +40,9 @@ public class PlayerMove_Script : MonoBehaviour
     }
     void move()
     {
+        if (Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         if (!Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.DownArrow)) { return; }
         next = new Vector2(X, Y);
         nextnext = next;
