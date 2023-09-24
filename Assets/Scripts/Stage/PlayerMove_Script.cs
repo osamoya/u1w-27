@@ -36,10 +36,10 @@ public class PlayerMove_Script : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.DownArrow)) { return; }
         next = new Vector2(X, Y);
         nextnext = next;
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) { next.x--; nextnext.x = next.x - 1; }
-        if (Input.GetKeyDown(KeyCode.RightArrow)) { next.x++; nextnext.x = next.x + 1; }
-        if (Input.GetKeyDown(KeyCode.UpArrow)) { next.y++; nextnext.y = next.y + 1; }
-        if (Input.GetKeyDown(KeyCode.DownArrow)) { next.y--; nextnext.y = next.y - 1; }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) { next.x--; nextnext.x = next.x - 1; changeDirection(4); }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) { next.x++; nextnext.x = next.x + 1; changeDirection(6); }
+        if (Input.GetKeyDown(KeyCode.UpArrow)) { next.y++; nextnext.y = next.y + 1; changeDirection(8); }
+        if (Input.GetKeyDown(KeyCode.DownArrow)) { next.y--; nextnext.y = next.y - 1; changeDirection(2); }
         //check next
         bool isnext = checkObject(next);
         //check nextnext
