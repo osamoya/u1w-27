@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+using DG.Tweening;
 public class CheckPanel_Script : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI ONOFF;
@@ -11,9 +13,13 @@ public class CheckPanel_Script : MonoBehaviour
     [SerializeField] bool noBall;
     [SerializeField] bool noON;
     [SerializeField] GameObject ClearPanel;
+    [SerializeField] Image fadeOverRay;
+    [SerializeField] AudioClip fadeOutRay;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource=GetComponent<AudioSource>();
         ClearPanel.SetActive(false);
     }
 
@@ -55,7 +61,10 @@ public class CheckPanel_Script : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("SelectScene");
+                audioSource.PlayOneShot(fadeOutRay);
+                fadeOverRay.DOFade(1, 0.2f);
+                DOVirtual.DelayedCall(1, () => SceneManager.LoadScene("SelectScene"));
+                
             }
             
         }

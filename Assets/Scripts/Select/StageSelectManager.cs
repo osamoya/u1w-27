@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class StageSelectManager : MonoBehaviour
 {
@@ -9,12 +10,20 @@ public class StageSelectManager : MonoBehaviour
     [SerializeField] int row = 3;
     [SerializeField] int col = 2;
     [SerializeField] int selectedStage = 0;
-    
+    [SerializeField] Image fadeOverRay;
+    [SerializeField] AudioClip select_;
+    AudioSource audioSource;
 
     Selectable[] selects;
     // Start is called before the first frame update
     void Start()
     {
+        DOTween.Sequence()
+            .Append(fadeOverRay.DOFade(1, 0))
+            .Append(fadeOverRay.DOFade(0, 1))
+        ;
+
+        audioSource = this.GetComponent<AudioSource>();
         selects = GetComponents<Selectable>();
         for(int i=0;i<selects.Length;i++)
         {
@@ -36,18 +45,19 @@ public class StageSelectManager : MonoBehaviour
     void selectNumber()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow)){
-            selectedStage++;
+            selectedStage++;audioSource.PlayOneShot(select_);
         }else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            selectedStage--;
-            
-        }else if (Input.GetKeyDown(KeyCode.UpArrow))
+            selectedStage--; audioSource.PlayOneShot(select_);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            selectedStage += row;
+            selectedStage += row; audioSource.PlayOneShot(select_);
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            selectedStage -= row;
+            selectedStage -= row; audioSource.PlayOneShot(select_);
         }
         if (selectedStage < 0) selectedStage += (row*col);
         selectedStage %= (row*col);

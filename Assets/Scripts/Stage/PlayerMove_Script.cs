@@ -16,9 +16,15 @@ public class PlayerMove_Script : MonoBehaviour
     Vector2 next;
     Vector2 nextnext;
     SpriteRenderer spriteRenderer;
+    [SerializeField] AudioClip move_;
+    [SerializeField] AudioClip col_;
+    [SerializeField] AudioClip btn_;
+    [SerializeField] AudioClip obj_;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         next = new Vector2(X, Y);
         nextnext = next;//not good...
         
@@ -59,11 +65,13 @@ public class PlayerMove_Script : MonoBehaviour
                 Debug.Log("XXX");
                 return;
             }
+            audioSource.PlayOneShot(obj_);
             objectPos.gameObject.GetComponent<Object_Script>().moveObject(nextnext);
         }
         
         {
             //transform.position = next;
+            audioSource.PlayOneShot(move_);
             transform.DOMove(next, 0.5f).SetEase(Ease.OutQuart);//(Ease)easeNum);//Ease.
         //Ease.q
         X = (int)next.x;
@@ -79,6 +87,7 @@ public class PlayerMove_Script : MonoBehaviour
     }
     private void switchButton()
     {
+        audioSource.PlayOneShot(btn_);
         Collider2D nextPos = Physics2D.OverlapPoint(next);
      
         if (nextPos == null) { return; }
@@ -89,6 +98,7 @@ public class PlayerMove_Script : MonoBehaviour
     }
     void DontMove()
     {
+        audioSource.PlayOneShot(col_);
         Vector2 now = new Vector2(X, Y);
         int t = 8;
         Vector2 p = (t * now + (10-t) * next)/10;

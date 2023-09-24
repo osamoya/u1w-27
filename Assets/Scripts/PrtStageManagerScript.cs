@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using DG.Tweening;
 public class PrtStageManagerScript : MonoBehaviour
 {
     PrtAppliancesScript[] appliancesScripts;
@@ -9,9 +10,19 @@ public class PrtStageManagerScript : MonoBehaviour
     public static int offNum;
     public static bool isClear;
     [SerializeField] GameObject panel;
+    
+    [SerializeField] Image fadeOverRay;
+    [SerializeField] AudioClip fadeOutRay;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        DOTween.Sequence()
+            .Append(fadeOverRay.DOFade(1, 0))
+            .Append(fadeOverRay.DOFade(0, 1))
+        ;
+
         appliancesScripts=FindObjectsOfType<PrtAppliancesScript>();
         appNum=appliancesScripts.Length;
         Debug.Log("‚±‚Ì•”‰®‚É‰Æ“d‚Í"+appNum);
