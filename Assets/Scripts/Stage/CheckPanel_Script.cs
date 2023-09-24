@@ -28,31 +28,31 @@ public class CheckPanel_Script : MonoBehaviour
     {
         if (Btn_Script.getBallNum()==0)
         {
-            RedBall.text = "<s>Still red</s>";
+            RedBall.text = "<s>赤い玉を部屋の中に残さない</s>";
             noBall = true;
         }
         else
         {
-            RedBall.text = "Still red";
+            RedBall.text = "赤い玉を部屋の中に残さない";
             noBall = false;
         }
         if (PrtStageManagerScript.isClear)
         {
-            ONOFF.text = "<s>Still ON...</s>";
+            ONOFF.text = "<s>部屋中の電源ぜんぶけす</s>";
             noON = true;
         }
         else
         {
-            ONOFF.text = "Still ON...";
+            ONOFF.text = "部屋中の電源ぜんぶけす";
             noON = false;
         }
         if (noBall&&noON)
         {
-            End.text = "↓Clear!";
+            End.text = "↓くりあ!";
         }
         else
         {
-            End.text = "↓back to stageSelect";
+            End.text = "↓もどる";
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)){
             if (noBall && noON)
