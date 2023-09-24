@@ -6,9 +6,13 @@ public class StageClearCheck_Script : MonoBehaviour
 {
     PrtStageManagerScript stageManager_;
     [SerializeField] GameObject CheckPanel;
+    [SerializeField] AudioClip in_;
+    [SerializeField] AudioClip out_;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource=GetComponent<AudioSource>();
         stageManager_ = GameObject.Find("Main Camera").GetComponent<PrtStageManagerScript>();
     }
 
@@ -23,6 +27,7 @@ public class StageClearCheck_Script : MonoBehaviour
         Debug.Log("ì•Ç›Ç‹ÇµÇΩ");
         if (!col.gameObject.CompareTag("Player")) { return; }
         //call Panel
+        audioSource.PlayOneShot(in_);
         CheckPanel.SetActive(true);
         /*
         Debug.Log("îªíËì•Ç›Ç‹ÇµÇΩ");
@@ -38,6 +43,7 @@ public class StageClearCheck_Script : MonoBehaviour
         Debug.Log("ç~ÇËÇ‹ÇµÇΩ");
         if (!col.gameObject.CompareTag("Player")) { return; }
         //disable Panel
+        audioSource.PlayOneShot(out_);
         CheckPanel.SetActive(false);
     }
 

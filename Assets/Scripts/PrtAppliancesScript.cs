@@ -8,9 +8,12 @@ public class PrtAppliancesScript : MonoBehaviour
     [SerializeField] Sprite ON_s;
     [SerializeField] Sprite OFF_s;
     SpriteRenderer sprite;
+    [SerializeField] AudioClip ONOFF_;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         isOn = true;
         sprite = GetComponent<SpriteRenderer>();
         sprite.sprite = (isOn) ? ON_s : OFF_s;
@@ -30,6 +33,7 @@ public class PrtAppliancesScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("ball"))
         {
+            audioSource.PlayOneShot(ONOFF_);
             Debug.Log("éÛêM");
             isOn = !isOn;
             sprite.sprite = (isOn) ? ON_s : OFF_s;
